@@ -1,7 +1,7 @@
 package com.paulmdavies.kenken
 
 sealed trait Operation {
-    def result(values: Seq[Int]): Int
+    protected[kenken] def result(values: Seq[Int]): Int
 }
 
 object NoOperation extends Operation {
