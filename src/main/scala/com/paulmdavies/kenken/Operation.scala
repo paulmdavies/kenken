@@ -11,3 +11,7 @@ object NoOperation extends Operation {
 object AdditionOperation extends Operation {
     override def correct(target: Int, values: Seq[Int]): Boolean = values.sum == target
 }
+
+object SubtractionOperation extends Operation {
+    override def correct(target: Int, values: Seq[Int]): Boolean = values.max - values.min == target
+}

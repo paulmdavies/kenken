@@ -107,5 +107,35 @@ class GroupTest extends FeatureSpec with GivenWhenThen {
             Then("The group is correct")
             assert(!group.correct)
         }
+
+        scenario("An subtraction group should be correct if the larger of its two square's values minus the lesser equals its target")
+        {
+            Given("A complete square with value 1")
+            val square11 = Square(1, 1, 1)
+
+            And("A complete square with value 2")
+            val square12 = Square(1, 2, 2)
+
+            And("A subtraction group containing those squares with target 1")
+            val group = Group(Seq(square11, square12), 1, SubtractionOperation)
+
+            Then("The group is correct")
+            assert(group.correct)
+        }
+
+        scenario("An subtraction group should not be correct if the larger of its two square's values minus the lesser does not equal its target")
+        {
+            Given("A complete square with value 1")
+            val square11 = Square(1, 1, 1)
+
+            And("A complete square with value 2")
+            val square12 = Square(1, 2, 2)
+
+            And("A subtraction group containing those squares with target 4")
+            val group = Group(Seq(square11, square12), 2, SubtractionOperation)
+
+            Then("The group is correct")
+            assert(!group.correct)
+        }
     }
 }
