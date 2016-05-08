@@ -1,13 +1,13 @@
 package com.paulmdavies.kenken
 
 sealed trait Operation {
-    protected[kenken] def result(values: Seq[Int]): Int
+    def correct(target: Int, values: Seq[Int]): Boolean
 }
 
 object NoOperation extends Operation {
-    protected[kenken] def result(values: Seq[Int]): Int = values.head
+    override def correct(target: Int, values: Seq[Int]): Boolean = values.forall(_ == target)
 }
 
 object AdditionOperation extends Operation {
-    protected[kenken] def result(values: Seq[Int]): Int = values.sum
+    override def correct(target: Int, values: Seq[Int]): Boolean = values.sum == target
 }
